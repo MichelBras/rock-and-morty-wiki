@@ -1,0 +1,26 @@
+{
+  "name": "symfony-docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MichelBras/rock-and-morty-wiki.git"
+  },
+  "private": true,
+  "devDependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@symfony/stimulus-bridge": "^4.0.0",
+    "@symfony/webpack-encore": "^5.1.0",
+    "webpack-notifier": "^1.15.0"
+  },
+  "dependencies": {
+    "core-js": "^3.40.0"
+  }
+}
