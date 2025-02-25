@@ -1,7 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello!{% endblock %}
-
 {% block body %}
-    <div data-controller="character"></div>
+    <div data-controller="character">
+
+        <select data-character-target="dropdown" data-action="change->character#update">
+            {% for dimension in dimensions %}
+                <option value="{{ dimension.id }}">{{ dimension.name }}</option>
+            {% endfor %}
+        </select>
+
+        <div data-character-target="loading" style="display: none;">
+            <p>Loading...</p>
+        </div>
+
+        {% if dimensions is empty %}
+            <p>No results found.</p>
+        {% else %}
+        <div data-character-target="display" class="mt-4">
+            <div class="alert alert-info"></div>
+        </div>
+        {% endif %}
+    </div>
 {% endblock %}

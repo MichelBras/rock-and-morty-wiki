@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="card">
+    <div class="card-body">
+        <h2>{{ dimensionData.name }}</h2>
+        <p>Type: {{ dimensionData.type }}</p>
+        <p>Dimension: {{ dimensionData.dimension }}</p>
+        <p>Number of Residents: {{ dimensionData.residents|length }}</p>
+
+        {% for resident in dimensionData.residents %}
+        <br>
+            <p>{{ resident.name ?? ''}}</p>
+            <p>{{ resident.species ?? '' }}</p>
+            <p>{{ resident.gender ?? ''}}</p>
+            {%  if resident.image is empty %}
+            {%  else %}
+                <img src="{{ resident.image ?? ''}}" alt="foo">
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

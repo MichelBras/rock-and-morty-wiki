@@ -16,6 +16,16 @@ final class CharacterController extends AbstractController
         private readonly CharacterService $characterService
     ) {}
 
+    #[Route('/dimension/{id}', name: 'dimension_details', methods: ['GET'])]
+    public function dimensionDetails(string $id): Response
+    {
+        $dimensionData = $this->characterService->getDimensionCharacters($id);
+
+        return $this->render('dimension/_details.html.twig', [
+            'dimensionData' => $dimensionData,
+        ]);
+    }
+
     #[Route('/characters', name: 'characters_page', methods: ['GET'])]
     public function charactersPage(): Response
     {
