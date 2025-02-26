@@ -2,10 +2,10 @@
 
 namespace App\Service;
 
-class CharacterService
+readonly class CharacterService
 {
     public function __construct(
-        private readonly RickAndMortyApiClient $apiClient
+        private RickAndMortyApiClient $apiClient
     ) {}
 
     public function getDimensionCharacters(string $dimension): array
@@ -19,12 +19,15 @@ class CharacterService
             )
         );
 
+        $characters = $this->apiClient->getCharacters($characterIds);
+
         return [
             'id' => $dimension,
             'name' => $locationData['name'],
             'type' => $locationData['type'],
             'dimension' => $locationData['dimension'],
-            'residents' => $this->apiClient->getCharacters($characterIds),
+            'totalResidents' => count($characterIds),
+            'residents' => $characters,
         ];
     }
 

@@ -7,17 +7,14 @@
         <h2>{{ dimensionData.name }}</h2>
         <p>Type: {{ dimensionData.type }}</p>
         <p>Dimension: {{ dimensionData.dimension }}</p>
-        <p>Number of Residents: {{ dimensionData.residents|length }}</p>
+        <p>Number of Residents: {{ dimensionData.totalResidents }}</p>
 
         {% for resident in dimensionData.residents %}
         <br>
             <p>{{ resident.name ?? ''}}</p>
             <p>{{ resident.species ?? '' }}</p>
             <p>{{ resident.gender ?? ''}}</p>
-            {%  if resident.image is empty %}
-            {%  else %}
-                <img src="{{ resident.image ?? ''}}" alt="foo">
-            {% endif %}
+            <img src="{{ resident.image ?? ''}}" alt="foo">
         {% endfor %}
     </div>
 </div>

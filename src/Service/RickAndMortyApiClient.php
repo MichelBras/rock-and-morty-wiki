@@ -36,6 +36,10 @@ class RickAndMortyApiClient
 
     public function getCharacters(array $characterIds): array
     {
+        if (empty($characterIds)) {
+            return [];
+        }
+
         $idList = implode(',', $characterIds);
         $response = $this->client->request('GET', self::BASE_URL . '/character/' . $idList);
         $data = $response->toArray();
